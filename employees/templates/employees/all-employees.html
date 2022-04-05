@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Список сотрудников{% endblock %}
+
+{% block content %}
+<table class="styled-table">
+    <tr>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Должность</th>
+        <th>Город</th>
+        <th>Часовой пояс</th>
+        <th>Номер телефона</th>
+        <th>Электорнная почта</th>
+        <th>Отдел</th>
+        <th>Число, задающее права</th>
+        <th>  </th>
+    </tr>
+    {% for employee in employees %}
+    <tr>
+        <td>{{ employee.last_name }}</td>
+        <td>{{ employee.first_name }}</td>
+        <td>{{ employee.middle_name }}</td>
+        <td>{{ employee.position }}</td>
+        <td>{{ employee.city }}</td>
+        <td>{{ employee.timezone }}</td>
+        <td>{{ employee.phone_number }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.department }}</td>
+        <td>{{ employee.rights_num }}</td>
+        <td><a href="{% url 'edit-emp' id=employee.id %}">Редактировать</a></td>
+        {% endfor %}
+    </tr>
+</table>
+<p><a href="{% url 'new-emp' %}"><button>Добавить сотрудника</button></a></p>
+<p><a href="{% url 'index' %}"><button>На главную</button></a></p>
+{% endblock %}

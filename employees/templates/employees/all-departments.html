@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Список отделов{% endblock %}
+
+{% block content %}
+<table class="styled-table">
+    <tr>
+        <th>Название отдела</th>
+        <th>Родительский отдел</th>
+        <th>Число, задающее права</th>
+        <th></th>
+        <th></th>
+    </tr>
+    {% for department in departments %}
+    <tr>
+        <td>{{ department.name }}</td>
+        <td>{{ department.parent_department }}</td>
+        <td>{{ department.rights_num }}</td>
+        <td><a href="{% url 'new-dept' parent_id=department.id %}">Добавить подотдел</a></td>
+        <td><a href="{% url 'edit-dept' id=department.id %}">Редактировать</a></td>
+        {% endfor %}
+    </tr>
+</table>
+<a href="{% url 'index' %}"><button>На главную</button></a>
+{% endblock %}

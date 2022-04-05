@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<p></p><a href="{% url 'new-emp' %}"><button class="button-46" role="button">Добавить сотрудника</button></a>
+<p><a href="{% url 'all-emp' %}"><button class="button-46" role="button">Список сотрудников</button></a></p>
+<p><a href="{% url 'all-dept' %}"><button class="button-46" role="button">Список отделов</button></a></p>
+{% endblock %}

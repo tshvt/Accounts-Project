@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Новый сотрудник{% endblock %}
+
+{% block content %}
+<form method="post" novalidate>
+{% csrf_token %}
+    {% for field in form %}
+    <div class="form">
+        {{field.label_tag}}
+        {{field}}
+        <div class="{%if form.errors or form.non_field_errors%} errors-form {%endif%}">
+        {{field.errors}}
+        </div>
+    {% endfor %}
+        <button>Отправить</button>
+    </div>
+     </form>
+
+
+{% endblock %}
